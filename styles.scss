@@ -1,0 +1,336 @@
+:root {
+    --font-principal: 'Arial', sans-serif;
+    --font-secondary: 'Georgia', serif;
+    --font-size: 1.75rem;
+    --color-primary: #d8d800;
+    --color-secondary: #393e06;
+    --color-background: #f1f1f1;
+    --color-nav: #f9fbe3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--color-background);
+    font-family: var(--font-principal);
+    min-height: 100vh;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 20px;
+    list-style: none;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.page-title {
+    text-align: left;
+    font-weight: 700;
+    font-size: var(--font-size);
+    color: white;
+    background-color: var(--color-primary);
+    padding: 0.625rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+.page-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: var(--font-principal);
+}
+
+.page-container>nav {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    flex-shrink: 0;
+    z-index: 5;
+    background-color: var(--color-secondary);
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-secondary);
+    color: var(--color-nav);
+    min-height: 100%;
+    width: fit-content;
+    position: sticky;
+    top: 0;
+}
+
+.menu-title {
+    font-size: calc(var(--font-size) * 0.8);
+    background-color: var(--color-secondary);
+    color: var(--color-nav);
+    text-align: center;
+    padding: 0.6rem 1rem;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-nav);
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+ul li {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: black;
+    background-color: transparent;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-bottom: none;
+}
+
+ul li:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: grey;
+}
+
+main {
+    all: unset;
+    display: block;
+    flex: 1;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: var(--color-background);
+    box-sizing: border-box;
+}
+
+main>* {
+    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    max-width: none;
+    margin: 0;
+    width: 100%;
+}
+
+.card {
+    background: white;
+    border: 1px solid black;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 140px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid grey;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.member-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.4;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+footer {
+    text-align: left;
+    font-size: calc(var(--font-size) - 0.7);
+    font-family: var(--font-principal);
+    color: #2d3748;
+    background-color: var(--color-nav);
+    padding: 0.625rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+/* TABLET Y MÓVIL (≤768px) */
+@media (max-width: 768px) {
+
+    .toolbar,
+    .menu-title {
+        display: none !important;
+    }
+
+    .page-container {
+        flex-direction: column;
+    }
+
+    .page-container>nav {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: auto;
+        z-index: 1000;
+        background-color: var(--color-secondary);
+        order: 1;
+    }
+
+    main {
+        order: 2;
+        padding: 20px 10px;
+    }
+
+    .menu-container {
+        flex-direction: row;
+        overflow-x: auto;
+        width: 100%;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    ul {
+        flex-direction: row;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        width: max-content;
+        min-width: 100%;
+    }
+
+    ul li {
+        padding: 0.9rem 1.2rem;
+        white-space: nowrap;
+        min-width: fit-content;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: none;
+        font-size: 0.9rem;
+    }
+
+    ul li:last-child {
+        border-right: none;
+    }
+
+    ul li:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card {
+        min-height: 120px;
+        padding: 12px;
+    }
+
+    .card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .member-name {
+        font-size: 12px;
+    }
+}
+
+/* ESCRITORIO (>768px) */
+
+@media (min-width: 769px) {
+    .page-container {
+        flex-direction: row;
+    }
+
+    .page-container>nav {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: fit-content;
+        flex-shrink: 0;
+        order: 0;
+        z-index: 9;
+    }
+
+    .menu-container {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        display: flex;
+    }
+
+    ul {
+        flex-direction: column;
+    }
+
+    ul li {
+        border-right: none;
+        border-bottom: 2px solid grey;
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+
+    ul li:last-child {
+        border-bottom: none;
+    }
+
+    main {
+        order: 1;
+        padding: 40px 20px;
+    }
+
+    .list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .card {
+        min-height: 140px;
+        padding: 16px;
+    }
+
+    .card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .member-name {
+        font-size: 13px;
+    }
+}
